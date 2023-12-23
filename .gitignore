@@ -1,0 +1,25 @@
+*.gradle/
+*.idea/
+
+# but allow the Gradle wrapper jar to include
+!gradle/wrapper/gradle-wrapper.jar
+
+# package files
+*.jar
+*.war
+*.zip
+*.tar.gz
+*.rar
+*.ear
+*.nar
+
+# log file
+*.log
+
+*.ctxt
+
+# compiled class file
+*.class
+.DS_STORE
+*.dist
+build
