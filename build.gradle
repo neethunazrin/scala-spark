@@ -4,60 +4,68 @@ allprojects {
     apply plugin: 'maven-publish'
     apply plugin: 'eclipse'
 }
+
 repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    // jcenter()
     mavenCentral()
+
 }
 
 dependencies {
-     // For running just with Spark Core
-      //implementation 'org.apache.spark:spark-core_2.12:3.0.0'
+//    // For running just with Spark Core
+    implementation "org.apache.spark:spark-core_$scalaVersion:$sparkSQLVersion"
 
     // Spark SQL subsumes Spark Core
-    implementation 'org.apache.spark:spark-sql_2.12:3.0.0'
+    implementation "org.apache.spark:spark-sql_$scalaVersion:$sparkSQLVersion"
+    implementation "org.apache.spark:spark-avro_$scalaVersion:$scalaAvroVersion"
+
 
     // Use Scalatest for testing our library
-    testImplementation 'junit:junit:null'
-    testImplementation 'org.scalatest:scalatest_2.13:3.1.2'
-    testImplementation 'org.scalatestplus:junit-4-12_2.13:3.1.2.0'
+    testImplementation "junit:junit:$jUnitVersion"
+    testImplementation "org.scalatestplus:junit-4-12_2.13:$scalaJunitTestVersion"
 
     // Need scala-xml at test runtime
-    testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.13:1.2.0'
+    //testRuntimeOnly 'org.scala-lang.modules:scala-xml_2.13:1.2.0'
+     implementation "org.scala-lang:scala-library:$scalaVersion"
+
+
+    // implementation "commons-collections:commons-collections:$scalaAvroVersion"
+    // testImplementation 'org.scalatest:scalatest_3:3.2.9'
+    //testImplementation 'junit:junit:4.13'
 }
+sourceSets{
 
-test {
-    useJUnitPlatform()
-}
-
-subprojects {
-    sourceSets{
-
-        main{
-          java{
-              srcDirs = []
-          }
-            resources {
-                srcDirs = ["src/main/resources"]
-            }
-            scala{
-                srcDirs = ["src/main/scala","src/main/java"]
-            }
-
+    main{
+        scala {
+            srcDirs = ['src/main/java','src/main/scala']
         }
 
-        test{
-            java {
-                srcDirs = ["src/test/java"]
-
-            }
-            scala {
-                srcDirs = ["src/test/scala"]
-
-            }
-            resources {
-                srcDirs = ["src/test/resources"]
-            }
+        java{
+            srcDirs = []
         }
+
+        resources{
+            srcDirs = ['src/main/resources']
+        }
+
     }
 
+    test{
+        java {
+            srcDirs = ["src/test/java"]
 
+        }
+        scala {
+            srcDirs = ["src/test/scala"]
+
+        }
+        resources {
+            srcDirs = ["src/test/resources"]
+        }
+    }
 }
+
+
+
