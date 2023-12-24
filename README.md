@@ -9,13 +9,13 @@
 
 Anyone can fork this feature branch and suggest changes to it by a pull request  .
 
-###Issues faced :
-1. brew installed java path is not showing for Gradle sdk path in intelliJ (opt folder is not showing)-> /opt/homebrew/opt/openjdk@11/bin/java 
-https://intellij-support.jetbrains.com/hc/en-us/community/posts/360007751379/comments/5199670293522 . 
+### Issues faced :
+1. brew installed java path is not showing for Gradle sdk path in intelliJ (opt folder is not showing)-> /opt/homebrew/opt/openjdk@11/bin/java
+   https://intellij-support.jetbrains.com/hc/en-us/community/posts/360007751379/comments/360001527259 . 
 Created a symlink to brew path and set it as JAVA_HOME and GRADLE jdk . IntelliJ points to /opt/homebrew path .
 We need to have standard layout structure in it , which will be find under `libexec`,brew usually installs the standard layout copy there. 
-```aidl
-neethunazrin@Neethus-MacBook-Pro ~ % ls -ltr /Library/Java/JavaVirtualMachines/openjdk-11.jdk
+```
+<user>@Neethu-machine ~ % ls -ltr /Library/Java/JavaVirtualMachines/openjdk-11.jdk
 total 0
 lrwxr-xr-x  1 root  wheel  48 Dec 23 22:21 openjdk.jdk -> /opt/homebrew/opt/openjdk@11/libexec/openjdk.jdk
 ```
