@@ -1,9 +1,6 @@
 .gradle/
 *.idea/
 
-# but allow the Gradle wrapper jar to include
-!gradle/wrapper/gradle-wrapper.jar
-
 # package files
 *.jar
 *.war
@@ -12,6 +9,9 @@
 *.rar
 *.ear
 *.nar
+
+# but allow the Gradle wrapper jar to include
+!gradle/wrapper/gradle-wrapper.jar
 
 # log file
 *.log
